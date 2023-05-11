@@ -19,9 +19,16 @@ const styles = StyleSheet.create({
         borderRadius : 10,
         overflow : 'hidden',
         marginVertical : 5,
-        marginHorizontal : '2%'
+        marginHorizontal : '2%',
+        position : 'relative'
     },
     image : {
         minHeight : 250
+    },
+    text : {
+        position : 'absolute',
+        color : 'white',
+        left : 10,
+        bottom : 10
     }
 })

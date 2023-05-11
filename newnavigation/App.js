@@ -7,6 +7,7 @@ import HomeCardNavigation from './src/navigation/HomeCardNavigation';
 export default function App() {
   return (
     <NavigationContainer>
+      <StatusBar style='light'/>
       <HomeCardNavigation/>
     </NavigationContainer>
   );

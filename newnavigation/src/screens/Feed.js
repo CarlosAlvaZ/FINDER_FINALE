@@ -18,6 +18,9 @@ export default function Home({ navigation }) {
 
   useEffect(() => {
     reStack()
+    return (
+      setUsersFeed([])
+    )
   }, [])
 
   return (
@@ -50,7 +53,8 @@ const styles = StyleSheet.create({
     width : width,
     height : height,
     position : 'relative',
-    zIndex : 10
+    zIndex : 10,
+    paddingVertical : 30
   },
   blackOverlay : {
     position : 'absolute',
