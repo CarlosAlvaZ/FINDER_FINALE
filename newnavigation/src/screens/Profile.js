@@ -52,12 +52,13 @@ const Item = ({ imagen }) => (
   </View>
 );
 
-export default function Profile() {
+export default function Profile({ navigation }) {
+
   return (
     <ScrollView>
       <View style={styles.container}>
         <View style={styles.header}>
-          <TouchableOpacity style={styles.closebuttom}>
+          <TouchableOpacity style={styles.closebuttom} onPress={() => navigation.replace('Login')}>
             <Text style={styles.textClose}>Cerrar Sesion</Text>
           </TouchableOpacity>
         </View>
