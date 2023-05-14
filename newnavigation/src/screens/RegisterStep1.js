@@ -1,13 +1,44 @@
-import React, {useState} from 'react'
-import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, ScrollView, Dimensions } from 'react-native'
+import React, {useState, useRef} from 'react'
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, ScrollView, Dimensions, Alert } from 'react-native'
 import LoginButton from '../components/LoginButton'
 import COlORS from '../MainDesignVariables'
+
+import {getAuth, createUserWithEmailAndPassword} from 'firebase/auth';
+import { initializeApp } from 'firebase/app';
+import { firebaseConfig } from '../firebase-config';
 
 const { width, height } = Dimensions.get('screen')
 
 export default function RegisterStep1({navigation}) {
 
+  const passwordCheckRef = useRef(null)
+
   const [secured, setSecured] = useState(true)
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [passwordCheck, setPasswordCheck] = useState('')
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  const handleCreateAcount = () => {
+    if (password === passwordCheck) {
+      createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        console.log('Cuenta Creada')
+        const user = userCredential.user;
+        console.log(user)
+        navigation.navigate('RegisterStep2')
+      })
+      .catch(error => {
+        console.log(error)
+        Alert.alert(error.message)
+      })
+    } else {
+      passwordCheckRef.current.focus()
+    }
+  }
 
   return (
     <ScrollView style={styles.mainContainer} contentContainerStyle={{alignItems : 'center'}} showsVerticalScrollIndicator={false} alwaysBounceVertical={true}>
@@ -18,7 +49,7 @@ export default function RegisterStep1({navigation}) {
 
         <View style={styles.inputSnippet}>
           <Image source={require('../../assets/Icons/UserIcon.png')}/>
-          <TextInput placeholder='Correo Electrónico' placeholderTextColor='#8D8D8D' style={styles.textInput}/>
+          <TextInput placeholder='Correo Electrónico' placeholderTextColor='#8D8D8D' style={styles.textInput} onChangeText={(text) => setEmail(text)}/>
         </View>
 
         <View style={styles.inputSnippet}>
@@ -30,7 +61,7 @@ export default function RegisterStep1({navigation}) {
                 <Image source={require('../../assets/Icons/EyeClosedIcon.png')} /> 
             }
           </TouchableOpacity>
-          <TextInput placeholder='Contraseña' secureTextEntry={secured}  placeholderTextColor='#8D8D8D' style={styles.textInput} autoCapitalize="none" autoCorrect={false}/>
+          <TextInput placeholder='Contraseña' secureTextEntry={secured}  placeholderTextColor='#8D8D8D' style={styles.textInput} autoCapitalize="none" autoCorrect={false} onChangeText={(text) => setPassword(text)}/>
         </View>
 
         <View style={styles.inputSnippet}>
@@ -42,10 +73,10 @@ export default function RegisterStep1({navigation}) {
                 <Image source={require('../../assets/Icons/EyeClosedIcon.png')} /> 
             }
           </TouchableOpacity>
-          <TextInput placeholder='Repetir Contraseña' secureTextEntry={secured}  placeholderTextColor='#8D8D8D' style={styles.textInput} autoCapitalize="none" autoCorrect={false}/>
+          <TextInput ref={passwordCheckRef} placeholder='Repetir Contraseña' secureTextEntry={secured}  placeholderTextColor='#8D8D8D' style={styles.textInput} autoCapitalize="none" autoCorrect={false} onChangeText={(text) => setPasswordCheck(text)}/>
         </View>
 
-        <LoginButton content={'Registrarse'} action={() => navigation.navigate('RegisterStep2')}/>
+        <LoginButton content={'Registrarse'} action={() => handleCreateAcount()}/>
 
       </View>
     </ScrollView>

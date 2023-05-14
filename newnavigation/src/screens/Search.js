@@ -24,7 +24,7 @@ export default function Search({navigation}) {
   return (
     <View style={styles.mainContainer}>
       <View style={styles.search}>
-        <TextInput ref={inputRef} placeholder='Buscar...' style={styles.searchInput} onChangeText={text=>setFilter(text)}/>
+        <TextInput ref={inputRef} placeholder='Buscar...' style={styles.searchInput} onChangeText={text=>setFilter(text)} placeholderTextColor='white'/>
         <TouchableOpacity style={styles.searchButton}>
           <Image source={require('../../assets/Icons/searchIcon.png')} style={styles.searchIcon}/>
         </TouchableOpacity>

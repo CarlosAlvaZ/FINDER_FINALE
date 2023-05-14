@@ -1,13 +1,41 @@
 import React, {useState} from 'react'
-import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, ScrollView, Dimensions } from 'react-native'
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, ScrollView, Dimensions, Alert } from 'react-native'
 import LoginButton from '../components/LoginButton'
 import COlORS from '../MainDesignVariables'
+
+import {getAuth, signInWithEmailAndPassword} from 'firebase/auth';
+import { initializeApp } from 'firebase/app';
+import { firebaseConfig } from '../firebase-config';
 
 const { width, height } = Dimensions.get('screen')
 
 export default function Login({navigation}) {
 
   const [secured, setSecured] = useState(true)
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  const handleSignIn = () => {
+    if (email != '' && password != '') {
+      signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        console.log('Sesion iniciada')
+        const user = userCredential.user;
+        console.log(user)
+        navigation.replace('Main');
+      })
+      .catch(error => {
+        Alert.alert(error.message)
+        console.log(error.message)
+      })
+    } else {
+      Alert.alert('Ingrese su email y contraseña')
+    }
+  }
 
   return (
     <ScrollView style={styles.mainContainer} contentContainerStyle={{alignItems : 'center'}} showsVerticalScrollIndicator={false} alwaysBounceVertical={true}>
@@ -18,7 +46,7 @@ export default function Login({navigation}) {
 
         <View style={styles.inputSnippet}>
           <Image source={require('../../assets/Icons/UserIcon.png')}/>
-          <TextInput placeholder='Correo Electrónico' placeholderTextColor='#8D8D8D' style={styles.textInput} textContentType='emailAddress'/>
+          <TextInput placeholder='Correo Electrónico' placeholderTextColor='#8D8D8D' style={styles.textInput} textContentType='emailAddress' onChangeText={(text) => setEmail(text)}/>
         </View>
 
         <View style={styles.inputSnippet}>
@@ -30,10 +58,10 @@ export default function Login({navigation}) {
                 <Image source={require('../../assets/Icons/EyeClosedIcon.png')} /> 
             }
           </TouchableOpacity>
-          <TextInput placeholder='Contraseña' secureTextEntry={secured}  placeholderTextColor='#8D8D8D' style={styles.textInput} autoCapitalize="none" autoCorrect={false}/>
+          <TextInput placeholder='Contraseña' secureTextEntry={secured}  placeholderTextColor='#8D8D8D' style={styles.textInput} autoCapitalize="none" autoCorrect={false} onChangeText={(text) => setPassword(text)}/>
         </View>
 
-        <LoginButton content={'Ingresar'}/>
+        <LoginButton content={'Ingresar'} action={() => handleSignIn()}/>
 
         <View style={styles.captionContainer}>
           <Text style={styles.caption}>Aun no tengo cuenta </Text>

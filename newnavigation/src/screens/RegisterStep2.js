@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, ScrollView, Dimensions } from 'react-native'
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, ScrollView, Dimensions, Alert } from 'react-native'
 import { Picker } from '@react-native-picker/picker'
 import LoginButton from '../components/LoginButton'
 import COlORS from '../MainDesignVariables'
@@ -12,6 +12,10 @@ export default function RegisterStep1({navigation}) {
 
   const [image, setImage] = useState(null)
   const [genero, setGenero] = useState()
+  const [userName, setUserName] = useState('')
+  const [age, setAge] = useState('')
+  const [ocupation, setOcupation] = useState('')
+  const [tel, setTel] = useState('')
 
   useEffect(() => {
     (async () => {
@@ -38,7 +42,21 @@ export default function RegisterStep1({navigation}) {
     }
   }
 
-  const [secured, setSecured] = useState(true)
+  const finish = () => {
+    if (image === null) {
+      Alert.alert('Debe agregarse una imagen de usuario')
+    } else if (userName == '') {
+      Alert.alert('Ingrese un nombre de usuario')
+    } else if (age == '') {
+      Alert.alert('Ingrese su edad')
+    } else if (ocupation == '') {
+      Alert.alert('Ingrese su ocupación')
+    } else if (tel == '') {
+      Alert.alert('Ingrese su número telefónico')
+    } else {
+      navigation.replace('Main')
+    }
+  }
 
   return (
     <ScrollView style={styles.mainContainer} contentContainerStyle={{alignItems : 'center'}} showsVerticalScrollIndicator={false} alwaysBounceVertical={true}>
@@ -58,7 +76,7 @@ export default function RegisterStep1({navigation}) {
         </View>
 
         <View style={styles.inputSnippet}>
-          <TextInput placeholder='Elije un nombre de usuario' placeholderTextColor='#8D8D8D' style={styles.textInput}/>
+          <TextInput placeholder='Elije un nombre de usuario' placeholderTextColor='#8D8D8D' style={styles.textInput} onChangeText={text => setUserName(text)}/>
         </View>
 
         <View style={styles.inputSnippetDouble}>
@@ -71,20 +89,20 @@ export default function RegisterStep1({navigation}) {
             </View>
 
             <View style={styles.inputAgeContainer}>
-              <TextInput placeholder='Edad' placeholderTextColor='#8D8D8D' style={styles.inputAge} keyboardType='phone-pad'/>
+              <TextInput placeholder='Edad' placeholderTextColor='#8D8D8D' style={styles.inputAge} keyboardType='phone-pad' onChangeText={text => setAge(text)}/>
             </View>
         </View>
 
         <View style={styles.inputSnippet}>
-          <TextInput placeholder='Ocupación' placeholderTextColor='#8D8D8D' style={styles.textInput}/>
+          <TextInput placeholder='Ocupación' placeholderTextColor='#8D8D8D' style={styles.textInput} onChangeText={text => setOcupation(text)}/>
         </View>
 
         <View style={styles.inputSnippet}>
-          <TextInput placeholder='Numero Telefónico' placeholderTextColor='#8D8D8D' style={styles.textInput} keyboardType='phone-pad'/>
+          <TextInput placeholder='Numero Telefónico' placeholderTextColor='#8D8D8D' style={styles.textInput} keyboardType='phone-pad' onChangeText={text => setTel(text)}/>
         </View>
 
 
-        <LoginButton content={'Finalizar'} action={() => navigation.navigate('RegisterStep2')}/>
+        <LoginButton content={'Finalizar'} action={() => finish()}/>
 
       </View>
     </ScrollView>

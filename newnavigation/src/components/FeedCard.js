@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 
-export default function FeedCard({user, navigation, height}) {
+export default function FeedCard({user, navigation}) {
   return (
     <View style={styles.card}>
         <TouchableOpacity onPress={() => navigation.navigate('MainView', {showUserById : user.id})}>
