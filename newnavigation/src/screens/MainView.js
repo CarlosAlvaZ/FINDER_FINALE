@@ -4,7 +4,6 @@ import Swiper from 'react-native-deck-swiper'
 import Card from '../components/Card'
 import MainViewButtons from '../components/MainViewButtons'
 
-import { StatusBar } from 'expo-status-bar'
 import { LinearGradient } from 'expo-linear-gradient'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 
@@ -44,7 +43,7 @@ export default function MainView({ navigation }) {
       </View>
 
       {
-        !requireNewPubs ?  
+        !requireNewPubs &&
         
         <>
         <Swiper
@@ -65,14 +64,16 @@ export default function MainView({ navigation }) {
             cardVerticalMargin={0}
             animateCardOpacity
             disableBottomSwipe={true}
-            stackSize= {3}></Swiper>
+            stackSize= {3}>
+              <View style={{flex : 1, display : 'flex', justifyContent : 'center', alignItems : 'center'}}>
+                <Text style={{ textAlign : 'center', color : 'white', fontSize : 16, fontWeight : 100 }}>Cargando nuevas publicaciones...</Text>
+              </View>
+            </Swiper>
           <MainViewButtons swiperRef={swiperRef}/>
         </>
-        : 
-        <Text style={{ textAlign : 'center', color : 'white' }}>Cargando nuevas publicaciones...</Text>
+        
       }
     </View>
-    <StatusBar style='light' />
     </>
   )
 }

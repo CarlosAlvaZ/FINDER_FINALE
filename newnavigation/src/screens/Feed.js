@@ -70,5 +70,10 @@ const styles = StyleSheet.create({
     flexDirection : 'column',
     justifyContent : 'center',
     paddingHorizontal : 20
+  },
+  lottie: {
+    width: 100,
+    height: 100,
+    marginVertical : 100
   }
 })
