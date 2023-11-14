@@ -16,7 +16,7 @@ export default function MainView({ navigation }) {
     userName : "",
     userSubtitle : "",
     photoDescription : "",
-    image : "image"
+    image : ""
   }])
 
   useEffect(() => {

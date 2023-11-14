@@ -45,7 +45,7 @@ export default function RegisterStep1({navigation}) {
       <Image source={require('../../assets/logo.png')} style={styles.logo}/>
 
       <View style={styles.mainCard}>
-        <Text style={styles.title}>Registrar</Text>
+        <Text style={styles.title}>Registrarme:</Text>
 
         <View style={styles.inputSnippet}>
           <Image source={require('../../assets/Icons/UserIcon.png')}/>
@@ -86,11 +86,13 @@ export default function RegisterStep1({navigation}) {
 const styles = StyleSheet.create({
   mainContainer : {
     flex : 1,
-    backgroundColor : COlORS.MAIN_COLOR
+    backgroundColor : COlORS.SCREEN_COLOR
   },
   logo : {
     marginTop : '25%',
-    marginBottom : '10%'
+    marginBottom : '10%',
+    width:200,
+    height:73
   },
   mainCard : {
     flex : 1,
@@ -108,13 +110,14 @@ const styles = StyleSheet.create({
   title : {
     fontSize : 30,
     fontWeight : 400,
-    marginTop : 30
+    marginTop : 30,
+    fontWeight:"bold"
   },
   inputSnippet : {
     width : '100%',
     display : 'flex',
     flexDirection : 'row',
-    borderBottomColor : COlORS.MAIN_COLOR,
+    borderBottomColor : COlORS.SCREEN_COLOR,
     borderBottomWidth : 3,
     padding : 10,
     gap : 10,
@@ -139,8 +142,8 @@ const styles = StyleSheet.create({
     margin : 0,
   },
   registerText : {
-    color : COlORS.MAIN_COLOR,
-    textDecorationColor : COlORS.MAIN_COLOR,
+    color : COlORS.SCREEN_COLOR,
+    textDecorationColor : COlORS.SCREEN_COLOR,
     textDecorationLine : 'underline',
     fontSize : 16,
     fontWeight : 500,

@@ -5,18 +5,18 @@ import DESING_VARS from '../MainDesignVariables'
 // Screens
 import Search from '../screens/Search'
 import Add from '../screens/Add'
-import Chat from '../screens/Chat'
 import Profile from '../screens/Profile'
 // Components
 import AddButton from '../components/AddButton'
 import ProfileImage from '../components/ProfileImage'
 import Feed from '../screens/Feed'
+import Info from '../screens/Info'
 
 
 // Tab Navigator
 const Tab = createBottomTabNavigator()
 
-// Ubicación de los datos provisionales, posteriormente será el endpoint de la API
+// Ubicación de los datos provisionales
 const userDataSource = '../provisionalData/provisionalProfile.json'
 
 // Navegación principal de tab bar
@@ -48,8 +48,8 @@ export default function MainNavigation() {
                     return <Image source={require('../../assets/Icons/homeIcon.png')} style={ { width : 20, height : 20, tintColor : focused ? DESING_VARS.MAIN_COLOR : DESING_VARS.CLEAR} }/>
                 } else if ( route.name == 'Search' ) {
                     return <Image source={require('../../assets/Icons/searchIcon.png')} style={ { width : 20, height : 20, tintColor : focused ? DESING_VARS.MAIN_COLOR : DESING_VARS.CLEAR} }/>
-                } else if ( route.name == 'Chat' ) {
-                    return <Image source={require('../../assets/Icons/chatIcon.png')} style={ { width : 20, height : 20, tintColor : focused ? DESING_VARS.MAIN_COLOR : DESING_VARS.CLEAR} }/>
+                } else if ( route.name == 'Info' ) {
+                    return <Image source={require('../../assets/Icons/info.png')} style={ { width : 20, height : 20, tintColor : focused ? DESING_VARS.MAIN_COLOR : DESING_VARS.CLEAR} }/>
                 }
             }
         }) }    
@@ -63,7 +63,7 @@ export default function MainNavigation() {
             tabBarButton : props => <AddButton {...props} />,
             tabBarLabel : () => null
         }}/>
-        <Tab.Screen name='Chat' component={Chat}/>
+        <Tab.Screen name='Info' component={Info}/>
         <Tab.Screen name='Profile' component={Profile} options={{
             // Icono con la imagen del perfil de usuario.
             tabBarIcon : () => <ProfileImage image={userData.profile_image} />

@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useRef} from 'react'
-import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity, FlatList } from 'react-native'
+import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity, FlatList, ScrollView } from 'react-native'
 import FeedCard from '../components/FeedCard'
 
 export default function Search({navigation}) {
@@ -23,6 +23,7 @@ export default function Search({navigation}) {
 
   return (
     <View style={styles.mainContainer}>
+      
       <View style={styles.search}>
         <TextInput ref={inputRef} placeholder='Buscar...' style={styles.searchInput} onChangeText={text=>setFilter(text)} placeholderTextColor='white'/>
         <TouchableOpacity style={styles.searchButton}>

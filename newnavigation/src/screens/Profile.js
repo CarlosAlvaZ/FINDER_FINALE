@@ -1,46 +1,36 @@
 import { StatusBar } from "expo-status-bar";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TouchableOpacity,
-  SafeAreaView,
-  FlatList,
-  Dimensions,
-  ScrollView
-} from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions, ScrollView, FlatList } from "react-native";
 
 //const creada para mostrar imagenes en el perfil solo como muestra
 
 const DATA = [
   {
     id: "1",
-    imagen: require("../../assets/Profile/s.jpg"),
+    imagen: require("../../assets/Profile/photo1.jpg"),
   },
   {
     id: "2",
-    imagen: require("../../assets/Profile/shoes.jpg"),
+    imagen: require("../../assets/Profile/photo2.jpg"),
   },
   {
     id: "3",
-    imagen: require("../../assets/Profile/w.jpg"),
+    imagen: require("../../assets/Profile/photo3.jpg"),
   },
   {
     id: "4",
-    imagen: require("../../assets/Profile/wo.jpg"),
+    imagen: require("../../assets/Profile/photo4.jpg"),
   },
   {
     id: "5",
-    imagen: require("../../assets/Profile/wom.jpg"),
+    imagen: require("../../assets/Profile/photo5.jpg"),
   },
   {
     id: "6",
-    imagen: require("../../assets/Profile/run.jpg"),
+    imagen: require("../../assets/Profile/photo6.jpg"),
   },
   {
     id: "7",
-    imagen: require("../../assets/Profile/woman.jpg"),
+    imagen: require("../../assets/Profile/photo7.jpg"),
   },
 ];
 
@@ -64,14 +54,14 @@ export default function Profile({ navigation }) {
         </View>
 
         <View style={styles.imageContainer}>
-          <Image style={styles.image} source={require("../../assets/Profile/woman.jpg")} />
+          <Image style={styles.image} source={require("../../assets/Profile/woman2.jpeg")} />
         </View>
         <View style={styles.textContainer}>
-          <Text style={styles.textTitle}>Angela Gomez</Text>
-          <Text style={styles.text}>ESTUDIANTE</Text>
-          <Text style={styles.text}>artes y moda</Text>
-          <Text style={styles.text}>comunicaciones</Text>
-          <Text style={styles.text}>20 años</Text>
+          <Text style={styles.textTitle}>Britney Sandoval</Text>
+          <Text style={styles.text}>Viajero & Blogger</Text>
+          <Text style={styles.text}>Artes y Moda</Text>
+          <Text style={styles.text}>Comunicaciones</Text>
+          <Text style={styles.text}>22 años</Text>
         </View>
         <View style={styles.pubs}>
           {

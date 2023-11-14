@@ -42,7 +42,7 @@ export default function Login({navigation}) {
       <Image source={require('../../assets/logo.png')} style={styles.logo}/>
 
       <View style={styles.mainCard}>
-        <Text style={styles.title}>Login</Text>
+        <Text style={styles.title}>Iniciar Sesion:</Text>
 
         <View style={styles.inputSnippet}>
           <Image source={require('../../assets/Icons/UserIcon.png')}/>
@@ -67,7 +67,6 @@ export default function Login({navigation}) {
           <Text style={styles.caption}>Aun no tengo cuenta </Text>
           <TouchableOpacity style={styles.registerButton} onPress={() => navigation.navigate('Register')}><Text style={styles.registerText}>Registrarme</Text></TouchableOpacity>
         </View>
-
       </View>
     </ScrollView>
   )
@@ -76,11 +75,13 @@ export default function Login({navigation}) {
 const styles = StyleSheet.create({
   mainContainer : {
     flex : 1,
-    backgroundColor : COlORS.MAIN_COLOR
+    backgroundColor : COlORS.SCREEN_COLOR
   },
   logo : {
-    marginTop : '25%',
-    marginBottom : '10%'
+    marginTop : '20%',
+    marginBottom : '10%',
+    width:200,
+    height:73
   },
   mainCard : {
     flex : 1,
@@ -98,13 +99,14 @@ const styles = StyleSheet.create({
   title : {
     fontSize : 30,
     fontWeight : 400,
-    marginTop : 30
+    marginTop : 30,
+    fontWeight:"bold"
   },
   inputSnippet : {
     width : '100%',
     display : 'flex',
     flexDirection : 'row',
-    borderBottomColor : COlORS.MAIN_COLOR,
+    borderBottomColor : COlORS.SCREEN_COLOR,
     borderBottomWidth : 3,
     padding : 10,
     gap : 10,
@@ -129,8 +131,8 @@ const styles = StyleSheet.create({
     margin : 0,
   },
   registerText : {
-    color : COlORS.MAIN_COLOR,
-    textDecorationColor : COlORS.MAIN_COLOR,
+    color : COlORS.SCREEN_COLOR,
+    textDecorationColor : COlORS.SCREEN_COLOR,
     textDecorationLine : 'underline',
     fontSize : 16,
     fontWeight : 500,

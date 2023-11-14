@@ -60,7 +60,7 @@ export default function RegisterStep1({navigation}) {
 
   return (
     <ScrollView style={styles.mainContainer} contentContainerStyle={{alignItems : 'center'}} showsVerticalScrollIndicator={false} alwaysBounceVertical={true}>
-      <Text style={styles.title}>Datos de Usuario: </Text>
+      <Text style={styles.title}>Información Personal: </Text>
 
       <View style={styles.mainCard}>
 
@@ -84,7 +84,7 @@ export default function RegisterStep1({navigation}) {
               <Picker selectedValue={genero} onValueChange={(itemValue, itemIndex) => setGenero(itemValue)} style={styles.picker} mode='dropdown'>
                 <Picker.Item label='Hombre' value='Hombre'></Picker.Item>
                 <Picker.Item label='Mujer' value='Hombre' />
-                <Picker.Item label='No Binario' value='NoBinario' />
+                <Picker.Item label='Prefiero no decirlo' value='Prefiero no decirlo' />
               </Picker>
             </View>
 
@@ -112,7 +112,7 @@ export default function RegisterStep1({navigation}) {
 const styles = StyleSheet.create({
   mainContainer : {
     flex : 1,
-    backgroundColor : COlORS.MAIN_COLOR
+    backgroundColor : COlORS.SCREEN_COLOR
   },
   mainCard : {
     flex : 1,
@@ -132,7 +132,8 @@ const styles = StyleSheet.create({
     fontWeight : 400,
     marginTop : '20%',
     marginBottom : '15%',
-    color : 'white'
+    color : 'white',
+    fontWeight:"bold"
   },
   imageContainer : {
     width : 150,
@@ -155,7 +156,7 @@ const styles = StyleSheet.create({
     width : '100%',
     display : 'flex',
     flexDirection : 'row',
-    borderBottomColor : COlORS.MAIN_COLOR,
+    borderBottomColor : COlORS.SCREEN_COLOR,
     borderBottomWidth : 3,
     padding : 10,
     gap : 10,
@@ -180,20 +181,20 @@ const styles = StyleSheet.create({
     width : '45%',
     padding : 0,
     margin : 0,
-    borderBottomColor : COlORS.MAIN_COLOR,
+    borderBottomColor : COlORS.SCREEN_COLOR,
     borderBottomWidth : 3,
     borderRadius : 2
   },
   picker : {
     width : '100%',
-    borderBottomColor : COlORS.MAIN_COLOR,
+    borderBottomColor : COlORS.SCREEN_COLOR,
     borderBottomWidth : 3,
   },
   inputAgeContainer : {
     width : '45%',
     display : 'flex',
     flexDirection : 'row',
-    borderBottomColor : COlORS.MAIN_COLOR,
+    borderBottomColor : COlORS.SCREEN_COLOR,
     borderBottomWidth : 3,
     padding : 10,
     gap : 10,

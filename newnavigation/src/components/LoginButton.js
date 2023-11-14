@@ -14,7 +14,7 @@ export default function LoginButton({content, action}) {
 
 const styles = StyleSheet.create({
     button : {
-        backgroundColor : COLORS.MAIN_COLOR,
+        backgroundColor : COLORS.SCREEN_COLOR,
         padding : 20,
         width : '100%',
         borderRadius : 5
